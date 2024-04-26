@@ -19,8 +19,12 @@ import { useEffect } from "react";
 const formSchema = z.object({
   email: z.string().optional(),
   name: z.string().min(1, "name is required"),
-  addressLine1: z.string().min(1, "Address Line 1 is required"),
+  phone: z.string().min(10, "Phone is required"),
+  addressline1: z.string().min(1, "Address Line 1 is required"),
+  addressline2: z.string().min(1, "Address Line 2 is required"),
+  postalcode: z.string().min(1, "Postal Code"),
   city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
   country: z.string().min(1, "Country is required"),
 });
 
@@ -88,14 +92,53 @@ const UserProfileForm = ({
             </FormItem>
           )}
         />
-
-        <div className="flex flex-col md:flex-row gap-4">
+        <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Phone</FormLabel>
+                <FormControl>
+                  <Input {...field} className="bg-white" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
-            name="addressLine1"
+            name="addressline1"
             render={({ field }) => (
               <FormItem className="flex-1">
                 <FormLabel>Address Line 1</FormLabel>
+                <FormControl>
+                  <Input {...field} className="bg-white" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="addressline2"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Address Line 2</FormLabel>
+                <FormControl>
+                  <Input {...field} className="bg-white" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+       
+        <div className="flex flex-col md:flex-row gap-4">
+          <FormField
+            control={form.control}
+            name="postalcode"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Postal Code</FormLabel>
                 <FormControl>
                   <Input {...field} className="bg-white" />
                 </FormControl>
@@ -109,6 +152,19 @@ const UserProfileForm = ({
             render={({ field }) => (
               <FormItem className="flex-1">
                 <FormLabel>City</FormLabel>
+                <FormControl>
+                  <Input {...field} className="bg-white" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="state"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>State</FormLabel>
                 <FormControl>
                   <Input {...field} className="bg-white" />
                 </FormControl>

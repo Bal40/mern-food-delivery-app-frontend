@@ -2,8 +2,12 @@ export type User = {
     _id: string;
     email: string;
     name: string;
-    addressLine1: string;
+    phone: string;
+    addressline1: string;
+    addressline2: string;
+    postalcode: string;
     city: string;
+    state: string;
     country: string;
   };
   
@@ -33,6 +37,8 @@ export type User = {
     | "inProgress"
     | "outForDelivery"
     | "delivered";
+
+
   
   export type Order = {
     _id: string;
@@ -45,9 +51,14 @@ export type User = {
     }[];
     deliveryDetails: {
       name: string;
-      addressLine1: string;
-      city: string;
       email: string;
+      phone: string;
+      addressline1: string;
+      addressline2: string;
+      postalcode: string;
+      city: string;
+     state: string;
+     country: string;
     };
     totalAmount: number;
     status: OrderStatus;
@@ -63,3 +74,6 @@ export type User = {
       pages: number;
     };
   };
+
+  // types.ts
+

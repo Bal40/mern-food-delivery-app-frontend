@@ -11,6 +11,7 @@ import CheckoutButton from "@/components/CheckoutButton";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { useCreateCheckoutSession } from "@/api/OrderApi";
 
+
 export type CartItem = {
   _id: string;
   name: string;
@@ -93,15 +94,19 @@ const DetailPage = () => {
       restaurantId: restaurant._id,
       deliveryDetails: {
         name: userFormData.name,
-        addressLine1: userFormData.addressLine1,
-        city: userFormData.city,
-        country: userFormData.country,
         email: userFormData.email as string,
+        phone:userFormData.phone,
+        addressline1: userFormData.addressline1,
+        addressline2: userFormData.addressline2,
+        postalcode: userFormData.postalcode,
+        city: userFormData.city,
+        state: userFormData.state,
+        country: userFormData.country
       },
-    };
+      };
 
-    const data = await createCheckoutSession(checkoutData);
-    window.location.href = data.url;
+     const data = await createCheckoutSession(checkoutData);
+      window.location.href = data.url;
   };
 
   if (isLoading || !restaurant) {

@@ -41,13 +41,18 @@ type CheckoutSessionRequest = {
     name: string;
     quantity: string;
   }[];
-  deliveryDetails: {
-    email: string;
-    name: string;
-    addressLine1: string;
-    city: string;
-  };
   restaurantId: string;
+  deliveryDetails: {
+    name: string;
+    email: string;
+    phone:string;
+    addressline1:string;
+    addressline2:string;
+    postalcode:string;
+    city:string;
+    state:string;
+    country:string;
+  },
 };
 
 export const useCreateCheckoutSession = () => {
